@@ -68,7 +68,7 @@ class Handler extends ExceptionHandler
             return $this->errorResponse($exception->getMessage(), Response::HTTP_UNAUTHORIZED);
         }
 
-        if (env('APP_DEBUG', false)){
+        if (env('APP_DEBUG', false)){        
             return parent::render($request, $exception);
         }
 
