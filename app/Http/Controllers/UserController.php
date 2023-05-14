@@ -36,7 +36,7 @@ class UserController extends Controller
 // GET (ID)
 public function showUserWithID($id)
 { 
-    return User::where('id', 'like', '%'.$id.'%')->get();
+    return User::where('authorId', $id)->get();
 
 }
 
