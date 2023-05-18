@@ -33,14 +33,14 @@ $router->get('/', function () use ($router) {
     $router->get('/studentsList',['uses' => 'UserController@getAllUsers']); */ 
 
 //<-- get all users
-$router->get('/studentsList',['uses' => 'UserController@getAllUsers']);
-$router->get('/users', 'UserController@index'); //<-- get all users
+// $router->get('/studentsList',['uses' => 'UserController@getAllUsers']);
+$router->get('/authors', 'UserController@index'); //<-- get all users
 
 
-$router->get('/users/{id}', 'UserController@showUserWithID'); // get user by id
+$router->get('/authors/{id}', 'UserController@showId'); // get user by id
 
-$router->post('/users', 'UserController@addUser'); // create new user record
+$router->post('/authors', 'UserController@add'); // create new user record
 
-$router->put('/users/{id}', 'UserController@updateUserInfo'); // update user record
+$router->put('/authors/{id}', 'UserController@update'); // update user record
 
-$router->delete('/users/{id}', 'UserController@deleteUser'); // delete record
+$router->delete('/authors/{id}', 'UserController@delete'); // delete record

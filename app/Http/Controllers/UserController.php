@@ -21,7 +21,7 @@ class UserController extends Controller
     }
 // GET
 
-    public function getAllUsers()
+    public function getAllData()
     {
         // eloquent style
         $users = User::all();
@@ -34,14 +34,14 @@ class UserController extends Controller
     }
 
 // GET (ID)
-public function showUserWithID($id)
+public function showId($id)
 { 
     return User::where('authorId', $id)->get();
 
 }
 
 // ADD
-public function addUser(Request $request)
+public function add(Request $request)
 {
     
     $rules = [
@@ -58,7 +58,7 @@ public function addUser(Request $request)
 }
 
 // UPDATE
-public function updateUserInfo(Request $request, $id)
+public function update(Request $request, $id)
 {
     $rules = [
       'firstname' => 'required|max:20',
@@ -75,7 +75,7 @@ public function updateUserInfo(Request $request, $id)
 
 // DELETE
 
-public function deleteUser($id)
+public function delete($id)
 {
     $user = User::findOrFail($id);
     $user->delete();
