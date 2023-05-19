@@ -6,14 +6,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 class User extends Model{
 public $timestamps = false; 
-protected $primaryKey = 'authorId'; 
+protected $primaryKey = 'bookId'; 
 
 // name of table
 
-protected $table = 'author';
+protected $table = 'book';
 
 // column sa table
 protected $fillable = [
-'firstname', 'lastname'
+'bookName', 'category'
 ];  
 }

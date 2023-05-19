@@ -1,6 +1,6 @@
 <?php
 
-//  <-- CONTROLLER - THE MIDDLE MAN
+//  CONTROLLER <- THE MIDDLE MAN
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Response;
@@ -8,7 +8,6 @@ use Illuminate\Http\Request; // <-- handling http request in lumen
 use App\Models\User; // <-- The model
 use App\Traits\ApiResponser; // <-- use to standardized our code for api response
 
-// use DB;  // <---if you're not using lumen eloquent you can use DB component in lumen
 
 class UserController extends Controller
 {
@@ -25,10 +24,6 @@ class UserController extends Controller
     {
         // eloquent style
         $users = User::all();
-
-        // sql string as parameter (if nag use og DB)
-        // $user = DB::connection('mysql')
-        // ->select("Select * from tbluser");
         // return response()->json($users, 200); // <-- before
         return $this->successResponse($users);
     }
@@ -36,7 +31,7 @@ class UserController extends Controller
 // GET (ID)
 public function showId($id)
 { 
-    return User::where('authorId', $id)->get();
+    return User::where('bookId', $id)->get();
 
 }
 
@@ -45,8 +40,8 @@ public function add(Request $request)
 {
     
     $rules = [
-    'firstname' => 'required|max:20',
-    'lastname' => 'required|max:20',
+    'bookName' => 'required',
+    'category' => 'required',
     ];
     $this->validate($request, $rules);
     $user = User::create($request->all());
@@ -61,8 +56,8 @@ public function add(Request $request)
 public function update(Request $request, $id)
 {
     $rules = [
-      'firstname' => 'required|max:20',
-      'lastname' => 'required|max:20',
+        'bookName' => 'required',
+        'category' => 'required',
     ];
     $this->validate($request, $rules);
     $user = User::findOrFail($id);
