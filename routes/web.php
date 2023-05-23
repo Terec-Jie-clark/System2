@@ -44,3 +44,9 @@ $router->post('/book', 'UserController@add'); // create new user record
 $router->put('/book/{id}', 'UserController@update'); // update user record
 
 $router->delete('/book/{id}', 'UserController@delete'); // delete record
+
+
+// publisher routes
+
+$router->get('/publisher', 'PublisherController@index');
+$router->get('/publisher/{publisherId}', 'PublisherController@show');

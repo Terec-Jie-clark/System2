@@ -14,6 +14,6 @@ protected $table = 'book';
 
 // column sa table
 protected $fillable = [
-'bookName', 'category'
+'bookName', 'category', 'publisherId'
 ];  
 }

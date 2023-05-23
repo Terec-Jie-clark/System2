@@ -5,7 +5,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request; // <-- handling http request in lumen
-use App\Models\User; // <-- The model
+use App\Models\User; // <-- Book model
+use App\Models\Publisher; // publisher model
 use App\Traits\ApiResponser; // <-- use to standardized our code for api response
 
 
@@ -42,8 +43,10 @@ public function add(Request $request)
     $rules = [
     'bookName' => 'required',
     'category' => 'required',
+    'publisherId' => 'required|numeric|min:1|not_in:0',
     ];
     $this->validate($request, $rules);
+    $publisher = Publisher::findOrFail($request->publisherId);
     $user = User::create($request->all());
 
     return $this->successResponse($user, Response::HTTP_CREATED);
@@ -58,8 +61,10 @@ public function update(Request $request, $id)
     $rules = [
         'bookName' => 'required',
         'category' => 'required',
+        'publisherId' => 'required|numeric|min:1|not_in:0',
     ];
     $this->validate($request, $rules);
+    $publisher = Publisher::findOrFail($request->publisherId);
     $user = User::findOrFail($id);
     $user->fill($request->all());
 
