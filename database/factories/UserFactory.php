@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserFactory extends Factory
@@ -12,7 +13,7 @@ class UserFactory extends Factory
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = User::class; // book database | model
 
     /**
      * Define the model's default state.
@@ -21,9 +22,12 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $category = ['Fiction', 'Love Story', 'Non-Fiction', 'Thriller', 'Science Fiction', 'Fantasy'];
+        $category = $this->faker->randomElement($category);
         return [
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
+            'bookName' => $this->faker->sentence(4), // generate 4 words
+            'category' => $category,
+            'publisherId' => $this->faker->numberBetween(1, 10),
         ];
-    }
+    }   
 }
