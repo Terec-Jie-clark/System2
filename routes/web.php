@@ -35,14 +35,9 @@ $router->get('/', function () use ($router) {
 //<-- get all users
 // $router->get('/studentsList',['uses' => 'UserController@getAllUsers']);
 $router->get('/book', 'UserController@index'); //<-- get all users
-
-
 $router->get('/book/{id}', 'UserController@showId'); // get user by id
-
 $router->post('/book', 'UserController@add'); // create new user record
-
 $router->put('/book/{id}', 'UserController@update'); // update user record
-
 $router->delete('/book/{id}', 'UserController@delete'); // delete record
 
 

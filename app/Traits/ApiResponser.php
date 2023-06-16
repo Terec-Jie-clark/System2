@@ -7,13 +7,13 @@ use Illuminate\Http\Response;
 trait ApiResponser {
 
   public function successResponse($data, $code = Response::HTTP_OK){
-    return response()->json(['data' => $data, 'site' => 2], $code);
+    return response()->json(['data' => $data, 'database' => 2], $code);
   }
 
   public function errorResponse($message, $code)
   {
 
-    return response()->json(['error' => $message, 'site2' => 2, 'code' => $code], $code);
+    return response()->json(['error' => $message, 'database' => 2, 'code' => $code], $code);
     
   }
 }
